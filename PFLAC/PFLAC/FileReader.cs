@@ -14,7 +14,6 @@ namespace PFLAC
     public List<MilitaryPerson> ReadFromExcel(string filePath)
     {
       ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
-      // Проверка существования файла
       if (!File.Exists(filePath))
       {
         throw new FileNotFoundException("Файл не найден!", filePath);
@@ -22,12 +21,11 @@ namespace PFLAC
 
       var militaryPersons = new List<MilitaryPerson>();
 
-      // Используем библиотеку EPPlus
       using (var package = new ExcelPackage(new FileInfo(filePath)))
       {
-        var worksheet = package.Workbook.Worksheets[0]; // Берем первый лист
+        var worksheet = package.Workbook.Worksheets[0]; // take the first sheet
 
-        int row = 2; // Предполагаем, что первая строка — это заголовки
+        int row = 2; // assume that the first line is the headings
         while (!string.IsNullOrEmpty(worksheet.Cells[row, 1].Text))
         {
           string fullName = worksheet.Cells[row, 1].Text;

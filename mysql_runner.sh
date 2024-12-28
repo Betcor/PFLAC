@@ -14,7 +14,7 @@ if [ -z "$LOCAL_IP" ]; then
     exit 1
 fi
 
-sudo sed -i "s/^bind-address\s*=.*/bind-address = $LOCAL_IP/" /etc/mysql/my.cnf
+sudo sed -i "s/^bind-address\s*=.*/bind-address = $LOCAL_IP/" /etc/mysql/mysql.conf.d/mysqld.cnf
 sudo systemctl restart mysql
 
 echo "MySQL is configured to bind to the IP: $LOCAL_IP"

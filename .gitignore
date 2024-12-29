@@ -6,6 +6,7 @@
 ########
 .DS_Store
 text.txt
+*.key
 
 ###################
 # compiled source #

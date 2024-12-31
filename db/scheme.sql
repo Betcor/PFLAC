@@ -22,10 +22,10 @@
 DROP TABLE IF EXISTS `table_physical`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `table_physical` (
+CREATE TABLE IF NOT EXISTS `table_physical` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `age_group` int DEFAULT NULL,
-  `gender` varchar(50) DEFAULT NULL,
+  `age_group` int NOT NULL DEFAULT NULL,
+  `gender` varchar(50) NOT NULL DEFAULT 'man',
   `exercise_number` int DEFAULT NULL,
   `exercise_name` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -49,20 +49,22 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `table_scoring`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `table_scoring` (
+
+-- default float = 0.1 --
+CREATE TABLE IF NOT EXISTS `table_scoring` (
   `score_count` int NOT NULL AUTO_INCREMENT,
-  `exercise_man_25` float DEFAULT NULL,
-  `exercise_man_14` float DEFAULT NULL,
-  `exercise_man_20` float DEFAULT NULL,
-  `exercise_man_21` float DEFAULT NULL,
-  `exercise_man_1` float DEFAULT NULL,
-  `exercise_man_2` float DEFAULT NULL,
-  `exercise_man_3` float DEFAULT NULL,
-  `exercise_woman_20` float DEFAULT NULL,
-  `exercise_woman_21` float DEFAULT NULL,
-  `exercise_woman_1` float DEFAULT NULL,
-  `exercise_woman_2` float DEFAULT NULL,
-  `exercise_woman_3` float DEFAULT NULL,
+  `exercise_man_25` float NOT NULL DEFAULT 0.1,
+  `exercise_man_14` float NOT NULL DEFAULT 0.1,
+  `exercise_man_20` float NOT NULL DEFAULT 0.1,
+  `exercise_man_21` float NOT NULL DEFAULT 0.1,
+  `exercise_man_1` float NOT NULL DEFAULT 0.1,
+  `exercise_man_2` float NOT NULL DEFAULT 0.1,
+  `exercise_man_3` float NOT NULL DEFAULT 0.1,
+  `exercise_woman_20` float NOT NULL DEFAULT 0.1,
+  `exercise_woman_21` float NOT NULL DEFAULT 0.1,
+  `exercise_woman_1` float NOT NULL DEFAULT 0.1,
+  `exercise_woman_2` float NOT NULL DEFAULT 0.1,
+  `exercise_woman_3` float NOT NULL DEFAULT 0.1,
   PRIMARY KEY (`score_count`)
 ) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -84,10 +86,10 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `table_standarts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `table_standarts` (
+CREATE TABLE IF NOT EXISTS `table_standarts` (
   `id` int NOT NULL AUTO_INCREMENT,
   `category` int DEFAULT NULL,
-  `age_group` int DEFAULT NULL,
+  `age_group` int NOT NULL DEFAULT 25,
   `score` int DEFAULT NULL,
   `rating_5` varchar(50) DEFAULT NULL,
   `rating_4` varchar(50) DEFAULT NULL,

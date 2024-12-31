@@ -26,6 +26,17 @@ namespace PFLAC
             InitializeComponent();
         }
 
+// form onload
+/*
+
+if (IsEthernetAvailable()) {
+   Message.Success("Підключення до Інтернету");
+} else {
+   Message.Error("Нема Інтернету!");
+}
+
+*/
+
     private void loadFileBtn_Click(object sender, EventArgs e)
     {
       using (OpenFileDialog openFileDialog = new OpenFileDialog())

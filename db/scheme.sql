@@ -16,6 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `last_change`
+--
+
+DROP TABLE IF EXISTS `last_change`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE IF NOT EXISTS `last_change` (
+  date DATE NOT NULL DEFAULT '2025-01-01'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `last_date`
+--
+
+LOCK TABLES `last_change` WRITE;
+/*!40000 ALTER TABLE `last_change` DISABLE KEYS */;
+INSERT INTO `last_change` VALUES ('2025-01-07');
+/*!40000 ALTER TABLE `last_change` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+
+--
 -- Table structure for table `table_physical`
 --
 

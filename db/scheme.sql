@@ -15,6 +15,44 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+-- DELIMITER FOR table_physical --
+DELIMITER $$
+
+CREATE TRIGGER update_physical
+AFTER INSERT ON users
+FOR EACH ROW
+BEGIN
+    UPDATE last_change SET date = CURDATE();
+END$$
+
+DELIMITER ;
+
+-- DELIMITER FOR table_scoring --
+
+DELIMITER $$
+
+CREATE TRIGGER update_scoring
+AFTER INSERT ON users
+FOR EACH ROW
+BEGIN
+    UPDATE last_change SET date = CURDATE();
+END$$
+
+DELIMITER ;
+
+-- DELIMITER FOR table_standarts --
+
+DELIMITER $$
+
+CREATE TRIGGER update_standarts
+AFTER INSERT ON users
+FOR EACH ROW
+BEGIN
+    UPDATE last_change SET date = CURDATE();
+END$$
+
+DELIMITER ;
+
 --
 -- Table structure for table `last_change`
 --

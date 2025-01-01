@@ -83,7 +83,20 @@ namespace PFLAC
     }
 
     public string GetUpdateDataBase() {
-      // todo
+       // todo
+       string connectionString = "Server=localhost;Database=mydatabase;User ID=myuser;Password=mypassword;";
+
+        using (MySqlConnection conn = new MySqlConnection(connectionString))
+        {
+            conn.Open();
+            string query = "SELECT date FROM last_change LIMIT 1";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+                var result = cmd.ExecuteScalar();
+                return result != null ? result.ToString() : null;
+            }
+        }
     }
     
     private void DisplayPerson(MilitaryPerson person)

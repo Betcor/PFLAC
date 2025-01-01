@@ -22,28 +22,30 @@ namespace PFLAC
 
       try
       {
-        MySqlConnect connection = new MySqlConnect();
-        using (SqlCommand command = new SqlCommand(query))
+        using (MySqlConnect connection = new MySqlConnect())
         {
-          command.Parameters.AddWithValue("@Age", age);
-          command.Parameters.AddWithValue("@Gender", gender);
-
-          using (SqlDataReader reader = command.ExecuteReader())
+          using (MySqlCommand command = new MySqlCommand(query))
           {
-            while (reader.Read())
+            command.Parameters.AddWithValue("@Age", age);
+            command.Parameters.AddWithValue("@Gender", gender);
+
+            using (MySqlDataReader reader = command.ExecuteReader())
             {
-              if (int.TryParse(reader["NormValue"].ToString(), out int key))
+              while (reader.Read())
               {
-                string value = reader["NormKey"].ToString();
-                norms[key] = value;
+                if (int.TryParse(reader["NormValue"].ToString(), out int key))
+                {
+                  string value = reader["NormKey"].ToString();
+                  norms[key] = value;
+                }
               }
             }
-          }
+          } 
         }
       }
       catch (Exception ex)
       {
-        throw new Exception("Ошибка при работе с базой данных: " + ex.Message);
+        Messages.Error("Ошибка при работе с базой данных: " + ex.Message);
       }
 
       return norms;

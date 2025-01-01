@@ -12,6 +12,7 @@ using System.Net.NetworkInformation;
 using DotNetEnv;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Google.Protobuf.Compiler;
+using StackExchange.Redis;
 
 namespace PFLAC
 {
@@ -24,13 +25,27 @@ namespace PFLAC
     private int currentIndex = 0;
 
     public Form1()
-        {
-            InitializeComponent();
-        }
+    {
+      InitializeComponent();
+    }
+        
     private void Form1_Load(object sender, EventArgs e)
     {
       string fullPath = Env.GetFullPath(GetStatus());
       DotNetEnv.Env.Load(fullPath);
+
+      string lastUpdated = GetUpdateDataBase();
+      string _updateLocal = db.HashGet(key, "last_updated");
+      
+      if (lastUpdated == _updateLocal)
+      {
+          // connect to db with error))
+          // MySqlConnect conn = new MySqlConnect();
+          
+          Messages.Error("1");
+
+          GetUpdateDatabase();
+      }
 
       if (!EthernetCheck.IsEthernetAvailable())
       {
@@ -44,7 +59,7 @@ namespace PFLAC
       string status = envStatus == "dev" ? "dev" :
               envStatus == "test" ? "test" : "prod";
 
-     string fullPath = Env.GetFullPath(status);
+      string fullPath = Env.GetFullPath(status);
       return status;
     }
 
@@ -66,6 +81,11 @@ namespace PFLAC
 
       }
     }
+
+    public string GetUpdateDataBase() {
+      // todo
+    }
+    
     private void DisplayPerson(MilitaryPerson person)
     {
       fullNameTxtBox.Text = person.Name;

@@ -53,8 +53,9 @@ namespace PFLAC
       {
         Messages.Error($"{e.Message}");
       }
-      }
     }
+    
+    
 
     /*
     * @public

@@ -13,7 +13,7 @@ namespace PFLAC
       */
       public static string GetFullPath(string status)
       {
-        string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $".env{(string.IsNullOrEmpty(status) ? "" : $".{status}")}");
+        string filePath = $"C:\\Users\\38066\\source\\repos\\PFLAC\\.env{(string.IsNullOrEmpty(status) ? "" : $".{status}")}";
 
         if (!File.Exists(filePath))
         {

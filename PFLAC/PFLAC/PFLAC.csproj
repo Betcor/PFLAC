@@ -276,7 +276,6 @@
     <Compile Include="Modules\Messages.cs" />
     <Compile Include="Modules\env\Env.cs" />
     <Compile Include="Modules\mysql\MySqlConnect.cs" />
-    <Compile Include="Modules\mysql\Conector.cs" />
     <Compile Include="OutputHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

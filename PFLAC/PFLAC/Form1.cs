@@ -11,6 +11,7 @@ using System.Xml.Linq;
 using System.Net.NetworkInformation;
 using DotNetEnv;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Google.Protobuf.Compiler;
 
 namespace PFLAC
 {
@@ -116,6 +117,29 @@ namespace PFLAC
       }
     }
 
-    
+    private void getNormsBtn_Click(object sender, EventArgs e)
+    {
+      SavePersonData(persons[currentIndex]);
+
+      try
+      {
+        Dictionary<int, string> norms = DataBaseHandler.FetchNorms(persons[currentIndex].Age, persons[currentIndex].Gender);
+
+        // Запись первых трех норм в соответствующие лейблы
+        var normList = new List<string>(norms.Values);
+
+        norm1Lbl.Text = normList.Count > 0 ? normList[0] : "Нет данных";
+        norm2Lbl.Text = normList.Count > 1 ? normList[1] : "Нет данных";
+        norm3Lbl.Text = normList.Count > 2 ? normList[2] : "Нет данных";
+
+        norm1Lbl.Visible = true;
+        norm2Lbl.Visible = true;
+        norm3Lbl.Visible = true;
+      }
+      catch (Exception ex)
+      {
+        Messages.Error("Ошибка: " + ex.Message);
+      }
+    }
   }
 }

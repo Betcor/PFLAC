@@ -55,6 +55,7 @@ namespace PFLAC
             this.saveFileBtn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -75,6 +76,7 @@ namespace PFLAC
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.loadFileBtn);
@@ -248,6 +250,7 @@ namespace PFLAC
             this.getNormsBtn.TabIndex = 10;
             this.getNormsBtn.Text = "Визначити нормативи";
             this.getNormsBtn.UseVisualStyleBackColor = true;
+            this.getNormsBtn.Click += new System.EventHandler(this.getNormsBtn_Click);
             // 
             // label2
             // 
@@ -340,6 +343,15 @@ namespace PFLAC
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(265, 176);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 25);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "label4";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -391,6 +403,7 @@ namespace PFLAC
     private System.Windows.Forms.Button saveFileBtn;
     private System.Windows.Forms.GroupBox groupBox2;
     private System.Windows.Forms.GroupBox groupBox1;
+    private System.Windows.Forms.Label label4;
   }
 }
 

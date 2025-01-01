@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using System.Net.NetworkInformation;
+using DotNetEnv;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PFLAC
 {
@@ -19,25 +22,32 @@ namespace PFLAC
 
     private int currentIndex = 0;
 
-
-
     public Form1()
         {
             InitializeComponent();
         }
+    private void Form1_Load(object sender, EventArgs e)
+    {
+      string fullPath = Env.GetFullPath(GetStatus());
+      DotNetEnv.Env.Load(fullPath);
 
-// form onload
-/*
+      if (!EthernetCheck.IsEthernetAvailable())
+      {
+        // TODO DOCKER REDIS ;)
+      }
+    }
 
-if (IsEthernetAvailable()) {
-   Message.Success("Підключення до Інтернету");
-} else {
-   Message.Error("Нема Інтернету!");
-}
+    public static string GetStatus()
+    {
+      string envStatus = Environment.GetEnvironmentVariable("STATUS");
+      string status = envStatus == "dev" ? "dev" :
+              envStatus == "test" ? "test" : "prod";
 
-*/
+     string fullPath = Env.GetFullPath(status);
+      return status;
+    }
 
-    private void loadFileBtn_Click(object sender, EventArgs e)
+    private void LoadFileBtn_Click(object sender, EventArgs e)
     {
       using (OpenFileDialog openFileDialog = new OpenFileDialog())
       {
@@ -59,11 +69,11 @@ if (IsEthernetAvailable()) {
     {
       fullNameTxtBox.Text = person.Name;
       ageTxtBox.Text = person.Age.ToString();
-      if (person.Gender == "Male")
+      if (person.Gender == "man")
       {
         maleRdBtn.Checked = true;
       }
-      else if (person.Gender == "Female")
+      else if (person.Gender == "woman")
       {
         femaleRdBtn.Checked = true;
       }
@@ -82,11 +92,11 @@ if (IsEthernetAvailable()) {
     {
       person.Name = fullNameTxtBox.Text;
       person.Age = int.Parse(ageTxtBox.Text);
-      person.Gender = maleRdBtn.Checked ? "Male" : femaleRdBtn.Checked ? "Female" : "";
+      person.Gender = maleRdBtn.Checked ? "man" : femaleRdBtn.Checked ? "woman" : "";
       person.Status = oficerRdBtn.Checked ? "Officer" : soldierRdBtn.Checked ? "Contract" : "";
     }
 
-    private void nextBtn_Click(object sender, EventArgs e)
+    private void NextBtn_Click(object sender, EventArgs e)
     {
       if (currentIndex < persons.Count - 1)
       {
@@ -96,7 +106,7 @@ if (IsEthernetAvailable()) {
       }
     }
 
-    private void previousBtn_Click(object sender, EventArgs e)
+    private void PreviousBtn_Click(object sender, EventArgs e)
     {
       if (currentIndex > 0)
       {
@@ -105,5 +115,7 @@ if (IsEthernetAvailable()) {
         DisplayPerson(persons[currentIndex]);
       }
     }
+
+    
   }
 }

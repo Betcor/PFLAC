@@ -37,8 +37,6 @@ INSERT INTO `last_change` VALUES ('2025-01-07');
 /*!40000 ALTER TABLE `last_change` ENABLE KEYS */;
 UNLOCK TABLES;
 
-
-
 --
 -- Table structure for table `table_physical`
 --

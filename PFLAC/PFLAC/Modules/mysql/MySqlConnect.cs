@@ -4,8 +4,21 @@ using MySql.Data.MySqlClient;
 
 namespace PFLAC
 {
-  class MySqlConnect
+  class MySqlConnect : IDisposable
   {
+    /*
+    * @private
+    */
+    private MySqlConnection _connection;
+    
+    /*
+    * @public
+    */
+    public MySqlConnect()
+    {
+      Connect().Wait();
+    }
+    
     /*
     * @private
     *
@@ -26,26 +39,37 @@ namespace PFLAC
       }
 
       string connectionParams = $"Server={dbHost};Database={dbName};User ID={dbUser};Password={dbPass};";
+      _connection = new MySqlConnection(connectionParams);
 
-      using (MySqlConnection connection = new MySqlConnection(connectionParams))
+      try
       {
-        try
-        {
-          await connection.OpenAsync();
-        }
-        catch (MySqlException e)
-        {
-          Messages.Error($"{e.Message}");
-        }
-        catch (Exception e)
-        {
-          Messages.Error($"{e.Message}");
-        }
+        await _connection.OpenAsync();
+      }
+      catch (MySqlException e)
+      {
+        Messages.Error($"{e.Message}");
+      }
+      catch (Exception e)
+      {
+        Messages.Error($"{e.Message}");
+      }
       }
     }
-    public MySqlConnect()
+
+    /*
+    * @public
+    */
+    public MySqlCommand CreateCommand(string query)
     {
-      Connect();
+      return new MySqlCommand(query, _connection);
+    }
+
+    /*
+    * @public
+    */
+    public void Dispose()
+    {
+      _connection?.Dispose();
     }
   }
 }

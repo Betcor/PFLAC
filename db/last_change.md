@@ -1,3 +1,3 @@
-### last change table
+### [DEPRECATED] - last change table
 используется для отслеживания изминений в бд
 для коректной работы с локальной версией кеша redis

@@ -55,8 +55,6 @@ END$$
 DELIMITER ;
 
 --
-
---
 -- Table structure for table `last_change`
 --
 

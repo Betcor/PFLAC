@@ -12,7 +12,7 @@
 #### ```GET age_group``` - ```/{table_name}/age_group/{age_group}```
 #### ```GET gender``` - ```/{table_name}/gender/{gender}```
 #### ```GET exercise_number``` - ```/{table_name}/exercise_number/{exercise_number}```
-#### ```???????????????????????????????????????GET exercise_name``` - ```/{table_name}/{exercise_name}```
+#### GET exercise_name``` - ```/{table_name}/exercise_name/{exercise_name}```
 
 #
 

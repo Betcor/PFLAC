@@ -6,34 +6,80 @@ namespace PFLAC
 {
     public static class Env
     {
-      /*
-      * @public
-      *
-      * @params {string status}
-      */
-      public static string GetFullPath(string status)
-      {
-        string filePath = $"C:\\Users\\38066\\source\\repos\\PFLAC\\.env{(string.IsNullOrEmpty(status) ? "" : $".{status}")}";
-
-        if (!File.Exists(filePath))
+        /*
+        * @public
+        *
+        * @params {string status}
+        */
+        public static void GetFullPath(string status)
         {
-          Messages.Error("Файл .env не знайдено!");
-          return string.Empty;
+            string[] directoriesToSearch;
+
+            if (Path.DirectorySeparatorChar == '\\')
+            {
+                directoriesToSearch = new string[]
+                {
+                    Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)), // User profile
+                    "C:\\",
+                    "D:\\"
+                };
+            }
+            else
+            {
+                // Linux/OSX paths
+                directoriesToSearch = new string[]
+                {
+                    "/home",
+                    "/var", 
+                    "/etc" 
+                };
+            }
+
+            string searchPattern = string.IsNullOrEmpty(status) ? ".env" : $".env.{status}";
+
+            foreach (var dir in directoriesToSearch)
+            {
+                try
+                {
+                    foreach (var file in Directory.EnumerateFiles(dir, searchPattern, SearchOption.AllDirectories))
+                    {
+                        ProcessFullPath(file);
+                    }
+                }
+                catch (UnauthorizedAccessException)
+                {
+                    continue;
+                }
+                catch (Exception e)
+                {
+                    Messages.Error($"Немає доступу до папки: {dir}: {e.Message}");
+                }
+            }
         }
 
-        foreach (var line in File.ReadAllLines(filePath))
+        /*
+        *  @public
+        *  
+        *  @params {string file}
+        */
+        public static void ProcessFullPath(string file)
         {
-          var parts = line.Split('=', (char)StringSplitOptions.RemoveEmptyEntries);
+            try
+            {
+                foreach (var line in File.ReadAllLines(file))
+                {
+                    var parts = line.Split(new[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
 
-          if (parts.Length == 2)
-          {
-            Environment.SetEnvironmentVariable(parts[0], parts[1]);
-          }
+                    if (parts.Length == 2)
+                    {
+                        Environment.SetEnvironmentVariable(parts[0], parts[1]);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Messages.Error($"Помилка при обробці: {file}: {e.Message}");
+            }
         }
-
-        return filePath;
-
-      }
     }
 }
-

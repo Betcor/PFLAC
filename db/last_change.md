@@ -1,4 +1,4 @@
-### date поле в таблицах
+### last_change table
 
 #
 

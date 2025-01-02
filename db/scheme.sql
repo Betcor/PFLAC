@@ -15,6 +15,47 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+-- DELIMITER FOR table_physical --
+DELIMITER $$
+
+CREATE TRIGGER update_physical
+AFTER INSERT ON table_physical
+FOR EACH ROW
+BEGIN
+    UPDATE last_change SET date = CURDATE();
+END$$
+
+DELIMITER ;
+
+-- DELIMITER FOR table_scoring --
+
+DELIMITER $$
+
+CREATE TRIGGER update_scoring
+AFTER INSERT ON table_scoring
+FOR EACH ROW
+BEGIN
+    UPDATE last_change SET date = CURDATE();
+END$$
+
+DELIMITER ;
+
+-- DELIMITER FOR table_standarts --
+
+DELIMITER $$
+
+CREATE TRIGGER update_standarts
+AFTER INSERT ON table_standarts
+FOR EACH ROW
+BEGIN
+    UPDATE last_change SET date = CURDATE();
+END$$
+
+DELIMITER ;
+
+--
+
 --
 -- Table structure for table `last_change`
 --
@@ -23,8 +64,10 @@ DROP TABLE IF EXISTS `last_change`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE IF NOT EXISTS `last_change` (
-  date DATE NOT NULL DEFAULT '2025-01-01'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `id` int NOT NULL AUTO_INCREMENT,
+  date DATE NOT NULL DEFAULT '2025-01-01',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -33,11 +76,9 @@ CREATE TABLE IF NOT EXISTS `last_change` (
 
 LOCK TABLES `last_change` WRITE;
 /*!40000 ALTER TABLE `last_change` DISABLE KEYS */;
-INSERT INTO `last_change` VALUES ('2025-01-07');
+INSERT INTO `last_change` VALUES (1, '2025-01-07');
 /*!40000 ALTER TABLE `last_change` ENABLE KEYS */;
 UNLOCK TABLES;
-
-
 
 --
 -- Table structure for table `table_physical`
@@ -48,7 +89,7 @@ DROP TABLE IF EXISTS `table_physical`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE IF NOT EXISTS `table_physical` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `age_group` int NOT NULL DEFAULT NULL,
+  `age_group` int NOT NULL DEFAULT 0,
   `gender` varchar(50) NOT NULL DEFAULT 'man',
   `exercise_number` int DEFAULT NULL,
   `exercise_name` varchar(100) DEFAULT NULL,

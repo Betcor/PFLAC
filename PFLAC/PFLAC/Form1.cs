@@ -34,7 +34,7 @@ namespace PFLAC
       string fullPath = Env.GetFullPath(GetStatus());
       DotNetEnv.Env.Load(fullPath);
 
-      string lastUpdated = GetUpdateDataBase();
+      string lastUpdated = GetLastChangeDate();
       string _updateLocal = db.HashGet(key, "last_updated");
       
       if (lastUpdated == _updateLocal)

@@ -30,6 +30,12 @@ namespace PFLAC
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.oficerRdBtn = new System.Windows.Forms.RadioButton();
+            this.soldierRdBtn = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.femaleRdBtn = new System.Windows.Forms.RadioButton();
+            this.maleRdBtn = new System.Windows.Forms.RadioButton();
             this.loadFileBtn = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -39,10 +45,6 @@ namespace PFLAC
             this.norm1Lbl = new System.Windows.Forms.Label();
             this.calcGradeBtn = new System.Windows.Forms.Button();
             this.getNormsBtn = new System.Windows.Forms.Button();
-            this.femaleRdBtn = new System.Windows.Forms.RadioButton();
-            this.maleRdBtn = new System.Windows.Forms.RadioButton();
-            this.soldierRdBtn = new System.Windows.Forms.RadioButton();
-            this.oficerRdBtn = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ageTxtBox = new System.Windows.Forms.TextBox();
@@ -53,13 +55,12 @@ namespace PFLAC
             this.saveFileBtn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -75,6 +76,7 @@ namespace PFLAC
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.loadFileBtn);
@@ -100,6 +102,72 @@ namespace PFLAC
             this.tabPage1.Text = "Обрахунок";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.oficerRdBtn);
+            this.groupBox2.Controls.Add(this.soldierRdBtn);
+            this.groupBox2.Location = new System.Drawing.Point(248, 247);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(193, 123);
+            this.groupBox2.TabIndex = 20;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Вибір статусу";
+            // 
+            // oficerRdBtn
+            // 
+            this.oficerRdBtn.AutoSize = true;
+            this.oficerRdBtn.Location = new System.Drawing.Point(13, 23);
+            this.oficerRdBtn.Name = "oficerRdBtn";
+            this.oficerRdBtn.Size = new System.Drawing.Size(105, 29);
+            this.oficerRdBtn.TabIndex = 6;
+            this.oficerRdBtn.TabStop = true;
+            this.oficerRdBtn.Text = "Офіцер";
+            this.oficerRdBtn.UseVisualStyleBackColor = true;
+            // 
+            // soldierRdBtn
+            // 
+            this.soldierRdBtn.AutoSize = true;
+            this.soldierRdBtn.Location = new System.Drawing.Point(13, 73);
+            this.soldierRdBtn.Name = "soldierRdBtn";
+            this.soldierRdBtn.Size = new System.Drawing.Size(176, 29);
+            this.soldierRdBtn.TabIndex = 7;
+            this.soldierRdBtn.TabStop = true;
+            this.soldierRdBtn.Text = "За контрактом";
+            this.soldierRdBtn.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.femaleRdBtn);
+            this.groupBox1.Controls.Add(this.maleRdBtn);
+            this.groupBox1.Location = new System.Drawing.Point(11, 247);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(185, 123);
+            this.groupBox1.TabIndex = 19;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Вибір статі";
+            // 
+            // femaleRdBtn
+            // 
+            this.femaleRdBtn.AutoSize = true;
+            this.femaleRdBtn.Location = new System.Drawing.Point(5, 73);
+            this.femaleRdBtn.Name = "femaleRdBtn";
+            this.femaleRdBtn.Size = new System.Drawing.Size(87, 29);
+            this.femaleRdBtn.TabIndex = 9;
+            this.femaleRdBtn.TabStop = true;
+            this.femaleRdBtn.Text = "Жінка";
+            this.femaleRdBtn.UseVisualStyleBackColor = true;
+            // 
+            // maleRdBtn
+            // 
+            this.maleRdBtn.AutoSize = true;
+            this.maleRdBtn.Location = new System.Drawing.Point(5, 23);
+            this.maleRdBtn.Name = "maleRdBtn";
+            this.maleRdBtn.Size = new System.Drawing.Size(104, 29);
+            this.maleRdBtn.TabIndex = 8;
+            this.maleRdBtn.TabStop = true;
+            this.maleRdBtn.Text = "Чоловік";
+            this.maleRdBtn.UseVisualStyleBackColor = true;
+            // 
             // loadFileBtn
             // 
             this.loadFileBtn.Location = new System.Drawing.Point(16, 18);
@@ -108,7 +176,7 @@ namespace PFLAC
             this.loadFileBtn.TabIndex = 18;
             this.loadFileBtn.Text = "Завантажити таблицю з файлу (excel)";
             this.loadFileBtn.UseVisualStyleBackColor = true;
-            this.loadFileBtn.Click += new System.EventHandler(this.loadFileBtn_Click);
+            this.loadFileBtn.Click += new System.EventHandler(this.LoadFileBtn_Click);
             // 
             // textBox3
             // 
@@ -182,50 +250,7 @@ namespace PFLAC
             this.getNormsBtn.TabIndex = 10;
             this.getNormsBtn.Text = "Визначити нормативи";
             this.getNormsBtn.UseVisualStyleBackColor = true;
-            // 
-            // femaleRdBtn
-            // 
-            this.femaleRdBtn.AutoSize = true;
-            this.femaleRdBtn.Location = new System.Drawing.Point(5, 73);
-            this.femaleRdBtn.Name = "femaleRdBtn";
-            this.femaleRdBtn.Size = new System.Drawing.Size(87, 29);
-            this.femaleRdBtn.TabIndex = 9;
-            this.femaleRdBtn.TabStop = true;
-            this.femaleRdBtn.Text = "Жінка";
-            this.femaleRdBtn.UseVisualStyleBackColor = true;
-            // 
-            // maleRdBtn
-            // 
-            this.maleRdBtn.AutoSize = true;
-            this.maleRdBtn.Location = new System.Drawing.Point(5, 23);
-            this.maleRdBtn.Name = "maleRdBtn";
-            this.maleRdBtn.Size = new System.Drawing.Size(104, 29);
-            this.maleRdBtn.TabIndex = 8;
-            this.maleRdBtn.TabStop = true;
-            this.maleRdBtn.Text = "Чоловік";
-            this.maleRdBtn.UseVisualStyleBackColor = true;
-            // 
-            // soldierRdBtn
-            // 
-            this.soldierRdBtn.AutoSize = true;
-            this.soldierRdBtn.Location = new System.Drawing.Point(13, 73);
-            this.soldierRdBtn.Name = "soldierRdBtn";
-            this.soldierRdBtn.Size = new System.Drawing.Size(176, 29);
-            this.soldierRdBtn.TabIndex = 7;
-            this.soldierRdBtn.TabStop = true;
-            this.soldierRdBtn.Text = "За контрактом";
-            this.soldierRdBtn.UseVisualStyleBackColor = true;
-            // 
-            // oficerRdBtn
-            // 
-            this.oficerRdBtn.AutoSize = true;
-            this.oficerRdBtn.Location = new System.Drawing.Point(13, 23);
-            this.oficerRdBtn.Name = "oficerRdBtn";
-            this.oficerRdBtn.Size = new System.Drawing.Size(105, 29);
-            this.oficerRdBtn.TabIndex = 6;
-            this.oficerRdBtn.TabStop = true;
-            this.oficerRdBtn.Text = "Офіцер";
-            this.oficerRdBtn.UseVisualStyleBackColor = true;
+            this.getNormsBtn.Click += new System.EventHandler(this.getNormsBtn_Click);
             // 
             // label2
             // 
@@ -267,7 +292,7 @@ namespace PFLAC
             this.nextBtn.TabIndex = 1;
             this.nextBtn.Text = ">";
             this.nextBtn.UseVisualStyleBackColor = true;
-            this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
+            this.nextBtn.Click += new System.EventHandler(this.NextBtn_Click);
             // 
             // previousBtn
             // 
@@ -277,7 +302,7 @@ namespace PFLAC
             this.previousBtn.TabIndex = 0;
             this.previousBtn.Text = "<";
             this.previousBtn.UseVisualStyleBackColor = true;
-            this.previousBtn.Click += new System.EventHandler(this.previousBtn_Click);
+            this.previousBtn.Click += new System.EventHandler(this.PreviousBtn_Click);
             // 
             // tabPage2
             // 
@@ -318,27 +343,14 @@ namespace PFLAC
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
-            // groupBox1
+            // label4
             // 
-            this.groupBox1.Controls.Add(this.femaleRdBtn);
-            this.groupBox1.Controls.Add(this.maleRdBtn);
-            this.groupBox1.Location = new System.Drawing.Point(11, 247);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(185, 123);
-            this.groupBox1.TabIndex = 19;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Вибір статі";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.oficerRdBtn);
-            this.groupBox2.Controls.Add(this.soldierRdBtn);
-            this.groupBox2.Location = new System.Drawing.Point(248, 247);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(193, 123);
-            this.groupBox2.TabIndex = 20;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Вибір статусу";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(265, 176);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 25);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "label4";
             // 
             // Form1
             // 
@@ -348,15 +360,16 @@ namespace PFLAC
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -390,6 +403,7 @@ namespace PFLAC
     private System.Windows.Forms.Button saveFileBtn;
     private System.Windows.Forms.GroupBox groupBox2;
     private System.Windows.Forms.GroupBox groupBox1;
+    private System.Windows.Forms.Label label4;
   }
 }
 

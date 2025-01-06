@@ -16,7 +16,7 @@ namespace PFLAC
       ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
       if (!File.Exists(filePath))
       {
-        throw new FileNotFoundException("Файл не найден!", filePath);
+        throw new FileNotFoundException("Файл не знайдено!!", filePath);
       }
 
       var militaryPersons = new List<MilitaryPerson>();

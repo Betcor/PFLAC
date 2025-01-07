@@ -1,3 +1,4 @@
+
 -- MySQL dump 10.13  Distrib 8.0.40, for Linux (x86_64)
 --
 -- Host: localhost    Database: datadb
@@ -14,6 +15,24 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+-- TRIGGER FOR table_physical --
+CREATE TRIGGER `update_physical` AFTER UPDATE ON `table_physical`
+ FOR EACH ROW BEGIN
+    UPDATE last_change SET date = CURDATE();
+END
+
+-- TRIGGER FOR table_scoring --
+CREATE TRIGGER `update_scoring` AFTER UPDATE ON `table_scoring`
+ FOR EACH ROW BEGIN
+    UPDATE last_change SET date = CURDATE();
+END
+
+-- TRIGGER FOR table_standarts --
+CREATE TRIGGER `update_standarts` AFTER UPDATE ON `table_standarts`
+ FOR EACH ROW BEGIN
+    UPDATE last_change SET date = CURDATE();
+END
 
 --
 -- Table structure for table `last_change`
@@ -33,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `last_change` (
 
 LOCK TABLES `last_change` WRITE;
 /*!40000 ALTER TABLE `last_change` DISABLE KEYS */;
-INSERT INTO `last_change` VALUES ('2025-01-07');
+INSERT INTO `last_change` VALUES ('2025-01-01');
 /*!40000 ALTER TABLE `last_change` ENABLE KEYS */;
 UNLOCK TABLES;
 
